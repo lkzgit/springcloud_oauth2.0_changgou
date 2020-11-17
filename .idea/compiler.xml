@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="changgou_user_oauth" />
+        <module name="changgou-service-user-api" />
+        <module name="changgou-service-content" />
+        <module name="changgou-service-user" />
+        <module name="changgou_service_goods_api" />
+        <module name="changgou-gateway-system" />
+        <module name="changgou_eureka" />
+        <module name="changgou_service_order" />
+        <module name="changgou_common_db" />
+        <module name="changgou_web" />
+        <module name="changgou_service_goods_service" />
+        <module name="changgou-service-content-api" />
+        <module name="changgou_common" />
+        <module name="changgou-gateway-web" />
+        <module name="changgou_service_order_api" />
+        <module name="changgou_service-file" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="changgou-service-caontent" target="1.8" />
+      <module name="chnaggou_service_file" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="changgou-gateway-system" options="-parameters" />
+      <module name="changgou-gateway-web" options="-parameters" />
+      <module name="changgou-service-caontent" options="-parameters" />
+      <module name="changgou-service-content" options="-parameters" />
+      <module name="changgou-service-content-api" options="-parameters" />
+      <module name="changgou-service-user" options="-parameters" />
+      <module name="changgou-service-user-api" options="-parameters" />
+      <module name="changgou_common" options="-parameters" />
+      <module name="changgou_common_db" options="-parameters" />
+      <module name="changgou_eureka" options="-parameters" />
+      <module name="changgou_gateway" options="-parameters" />
+      <module name="changgou_parent" options="-parameters" />
+      <module name="changgou_service" options="-parameters" />
+      <module name="changgou_service-file" options="-parameters" />
+      <module name="changgou_service_api" options="-parameters" />
+      <module name="changgou_service_goods_api" options="-parameters" />
+      <module name="changgou_service_goods_service" options="-parameters" />
+      <module name="changgou_service_order" options="-parameters" />
+      <module name="changgou_service_order_api" options="-parameters" />
+      <module name="changgou_user_oauth" options="-parameters" />
+      <module name="changgou_web" options="-parameters" />
+      <module name="chnaggou_service_file" options="-parameters" />
+    </option>
+  </component>
+</project>

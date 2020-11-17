@@ -1,0 +1,53 @@
+server:
+  port: 18090
+spring:
+  application:
+    name: order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/changgou_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  redis:
+    host: 182.92.106.193
+    password: VIKCireqXSsbMg5G
+    port: 6379
+    database: 1
+  main:
+    allow-bean-definition-overriding: true
+  #rabbitmq:
+    #host: 192.168.211.132
+    #port: 5672
+    #username: guest
+    #password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    prefer-ip-address: true
+feign:
+  httpclient:
+    enabled: true
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  MaxAutoRetries: 1 #同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetriesNextServer: 1 #重试负载均衡其他的实例最大重试次数,不包括首次调用
+  OkToRetryOnAllOperations: false
+
+#
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+          strategy: SEMAPHORE
+#mq:
+  #pay:
+    #queue:
+      #order: queue.order
