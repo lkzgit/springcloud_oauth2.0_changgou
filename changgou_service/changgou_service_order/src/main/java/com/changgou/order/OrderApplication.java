@@ -4,6 +4,8 @@ import entity.FeignInterceptor;
 import entity.IdWorker;
 import entity.TokenDecode;
 import feign.RequestInterceptor;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -21,6 +23,7 @@ public class OrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class,args);
     }
+
 
     @Bean
     RequestInterceptor feignInterceptor(){

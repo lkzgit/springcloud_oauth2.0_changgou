@@ -45,6 +45,12 @@ spring:
             - Path=/order/**
           filters:
             - StripPrefix= 1 #去掉前缀
+        - id: user-auth
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix= 1 #去掉前缀
   redis:
     host: 123.57.248.211
     password: VIKCireqXSsbMg5G

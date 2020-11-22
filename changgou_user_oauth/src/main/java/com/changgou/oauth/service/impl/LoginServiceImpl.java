@@ -32,7 +32,7 @@ public class LoginServiceImpl implements LoginService {
 
         //1.定义url (申请令牌的url)
         //参数 : 微服务的名称spring.appplication指定的名称
-        ServiceInstance choose = loadBalancerClient.choose("user-auth");
+        ServiceInstance choose = loadBalancerClient.choose("auth");
         String url =choose.getUri().toString()+"/oauth/token";
 
         //2.定义头信息 (有client id 和client secr)

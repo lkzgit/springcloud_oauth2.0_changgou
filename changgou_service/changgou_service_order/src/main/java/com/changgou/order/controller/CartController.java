@@ -58,8 +58,8 @@ public class CartController {
   //  @PreAuthorize("hasAnyAuthority('admin')")
     @GetMapping("list")
      public Result<List<OrderItem>> list(){
-        //String username = tokenDecode.getUserInfo().get("username");
-        List<OrderItem> list = cartService.list("szitheima");
+        String username = tokenDecode.getUserInfo().get("username");
+        List<OrderItem> list = cartService.list(username);
         return new Result<>(true, StatusCode.OK,"查询购物车列表数据成功",list);
     }
     @GetMapping("kk")

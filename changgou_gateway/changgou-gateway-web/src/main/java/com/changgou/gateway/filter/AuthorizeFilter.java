@@ -83,14 +83,14 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             //响应数据为空
             return response.setComplete();
         }else{
-            if(!hasToken){
+
                 //判断当前令牌是否有bear前缀 如果没有 添加前缀bearer
                 if(!token.startsWith("bearer")&&!token.startsWith("Bearer")){
                     token="bearer "+token;
                 }
                 //将令牌封装头文件
                 request.mutate().header(AUTHORIZE_TOKEN,token);
-            }
+
         }
 
         //添加头信息 传递给 各个微服务()

@@ -25,10 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/*****
- * @Author: www.itheima.com
- * @Description: entity
- ****/
+
 public class HttpClient {
     private String url;
     private Map<String, String> param;

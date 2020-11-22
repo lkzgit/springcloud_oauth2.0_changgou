@@ -66,6 +66,7 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.updateByPrimaryKeySelective(order);
         // 支付失败删除订单数据
         redisTemplate.boundHashOps("Order").delete(out_trade_no);
+        // 回滚库存 调用商品微服务
     }
 
     /**
@@ -102,6 +103,9 @@ public class OrderServiceImpl implements OrderService {
     public Order add(Order order){
         // 通过当前用户名查询到购物车数据
         List<OrderItem> itemList = cartService.list(order.getUsername());
+        // 获取勾选的商品id ,需要下单的商品从购物车中移除
+
+
         // 从购物车中取出订单表中要保存的数据
         Integer totalNum = 0;       // 商品数量
         Integer totalMoney = 0;     // 商品总金额

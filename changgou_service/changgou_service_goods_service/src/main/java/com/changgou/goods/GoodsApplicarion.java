@@ -1,5 +1,6 @@
 package com.changgou.goods;
 
+import entity.FeignInterceptor;
 import entity.IdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,4 +20,14 @@ public class GoodsApplicarion {
     @Bean
     public IdWorker idWorker(){
         return new IdWorker(0,1) ;}
+
+
+
+
+    @Bean
+    public FeignInterceptor feignInterceptor(){
+        return new FeignInterceptor();
+    }
+
+
 }

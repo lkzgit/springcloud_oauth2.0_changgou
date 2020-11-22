@@ -5,10 +5,21 @@ import com.changgou.order.service.OrderService;
 import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
+import entity.TokenDecode;
+import org.junit.Test;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -20,8 +31,39 @@ public class OrderController {
     private OrderService orderService;
 
 
-//    @Autowired
-//    private TokenDecode tokenDecode;
+    @Autowired
+    private TokenDecode tokenDecode;
+
+    /**
+     * 测试延时队列
+     */
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+
+    /***
+     * 发送消息
+     */
+    @GetMapping("test")
+    public void sendMessage() throws InterruptedException, IOException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println("发送当前时间:"+dateFormat.format(new Date()));
+        Map<String,String> message = new HashMap<>();
+        message.put("name","kk");
+        rabbitTemplate.convertAndSend("orderDelayQueue", message, new MessagePostProcessor() {
+            @Override
+            public Message postProcessMessage(Message message) throws AmqpException {
+                message.getMessageProperties().setExpiration("10000");
+                return message;
+            }
+        });
+
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+    }
 
 
     /***

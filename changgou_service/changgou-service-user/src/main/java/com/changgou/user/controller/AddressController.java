@@ -5,16 +5,13 @@ import com.changgou.user.service.AddressService;
 import com.github.pagehelper.PageInfo;
 import entity.Result;
 import entity.StatusCode;
+import entity.TokenDecode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/****
- * @Author:shenkunlin
- * @Description:
- * @Date 2019/6/14 0:18
- *****/
+
 
 @RestController
 @RequestMapping("/address")
@@ -24,20 +21,20 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-//    @Autowired
-//    private TokenDecode tokenDecode;
+    @Autowired
+    private TokenDecode tokenDecode;
 
 
     /**
      * 根据姓名查询当前登录用户的收货地址信息
      * @return
      */
-//    @GetMapping("/user/list")
-//    public Result<List<Address>> list(){
-//        String username = tokenDecode.getUserInfo().get("username");
-//        List<Address> list = addressService.list(username);
-//        return new Result<>(true, StatusCode.OK,"查询用户收货地址信息成功",list);
-//    }
+    @GetMapping("/user/list")
+    public Result<List<Address>> list(){
+        String username = tokenDecode.getUserInfo().get("username");
+        List<Address> list = addressService.list(username);
+        return new Result<>(true, StatusCode.OK,"查询用户收货地址信息成功",list);
+    }
 
     /***
      * Address分页条件搜索实现
