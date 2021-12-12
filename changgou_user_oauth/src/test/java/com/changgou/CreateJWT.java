@@ -46,7 +46,7 @@ public class CreateJWT {
         tokenMap.put("roles", "ROLE_VIP,ROLE_USER");
 
         //生成Jwt令牌
-        Jwt jwt = JwtHelper.encode(JSON.toJSONString(tokenMap), new RsaSigner(aPrivate));
+        Jwt jwt = JwtHelper.encode(JSON.toJSONString(tokenMap), new RsaSigner(aPrivate));//签名
 
         //取出令牌
         String encoded = jwt.getEncoded();

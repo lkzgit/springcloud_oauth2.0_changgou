@@ -34,9 +34,9 @@ auth:
 encrypt:
   key-store:
     location: classpath:/changgou.jks
-    secret: changgou
-    alias: changgou
-    password: changgou
+    secret: changgou  #密钥
+    alias: changgou #证书别名
+    password: changgou #证书密码
 # 开启熔断 默认是线程池隔离 feign请求头传递会出现问题
 feign:
   hystrix:

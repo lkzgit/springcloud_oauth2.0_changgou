@@ -50,12 +50,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             token= request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
             hasToken=false;
         }
-        if(StringUtils.isEmpty(token)){
-            //设置没有权限的状态码
-            response.setStatusCode(HttpStatus.UNAUTHORIZED);
-            //响应数据为空
-            return response.setComplete();
-        }
+
 //        if(StringUtils.isEmpty(token)){
 //            //4.4. 如果没有数据    没有登录,要重定向到登录到页面
 //            response.setStatusCode(HttpStatus.SEE_OTHER);//303 302

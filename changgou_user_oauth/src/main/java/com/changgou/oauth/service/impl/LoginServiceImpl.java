@@ -14,7 +14,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @Service
@@ -55,9 +57,7 @@ public class LoginServiceImpl implements LoginService {
         ResponseEntity<Map> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestentity, Map.class);
         //5.接收到返回的响应(就是:令牌的信息)
         Map body = responseEntity.getBody();
-
         //封装一次.
-
         AuthToken authToken = new AuthToken();
         //访问令牌(jwt)
         String accessToken = (String) body.get("access_token");
@@ -65,7 +65,6 @@ public class LoginServiceImpl implements LoginService {
         String refreshToken = (String) body.get("refresh_token");
         //jti，作为用户的身份标识
         String jwtToken= (String) body.get("jti");
-
 
         authToken.setJti(jwtToken);
         authToken.setAccessToken(accessToken);
